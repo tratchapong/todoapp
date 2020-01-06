@@ -1,19 +1,45 @@
 import React, { Component } from "react";
 import { Button, Input, Row, Col } from "antd";
 
+const api = 'http://localhost:3001'
+
 class Todo extends Component {
   state = {
     inputText: "",
-    items: ["play Guitar", "play React", "play JavaScript"]
+    items: []
   };
+
+componentDidMount = async () => {
+  const response = await fetch(`${api}/items`)
+  const items = await response.json()
+  // console.log(items)
+  this.setState({items})
+}
+
 
   handleChangeText = e => {
     this.setState({ inputText: e.target.value });
   };
 
-  addClick = e => {
+  addClick = async (e) => {
+    const item = this.state.inputText
+
+  /* VVV Error Bad request 400 HTTP */
+    await fetch(`${api}/items`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: {item}
+    })
+
+  /* ^^^ Error Bad request 400 HTTP */
+
+    console.log(JSON.stringify(item))
+    console.log(item)
+    const response = await fetch(`${api}/items`)
+    const items = await response.json()
+
     this.setState({
-      items: this.state.items.concat([this.state.inputText]),
+      items,
       inputText: ""
     });
     document.querySelector("#in1").focus();
