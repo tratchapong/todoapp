@@ -1,7 +1,8 @@
 {
     "items": [
-        "Play Rock n Roll",
-        "Read React Book",
-        "Take a bath my kid"
+        { "job" : "Play Rock n Roll" },
+        { "job" : "Read React Book" },
+        { "job" : "Take a bath my kid"},
+        { "job" : "Talk with a smile"}
     ]
   }

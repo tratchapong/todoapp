@@ -6,7 +6,7 @@ const api = 'http://localhost:3001'
 class Todo extends Component {
   state = {
     inputText: "",
-    items: []
+    items: [{}]
   };
 
 componentDidMount = async () => {
@@ -22,18 +22,17 @@ componentDidMount = async () => {
   };
 
   addClick = async (e) => {
-    const item = this.state.inputText
+    const item = { job : this.state.inputText }
 
   /* VVV Error Bad request 400 HTTP */
     await fetch(`${api}/items`, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: {item}
+      body: JSON.stringify(item)
     })
 
   /* ^^^ Error Bad request 400 HTTP */
 
-    console.log(JSON.stringify(item))
     console.log(item)
     const response = await fetch(`${api}/items`)
     const items = await response.json()
@@ -79,7 +78,7 @@ componentDidMount = async () => {
                 {this.state.items.map((v, i) => {
                   return (
                     <Row key={i} type='flex' justify='start'>
-                      <Col span={18} style={{ padding: "5px" ,border: "1px dashed blue" }}> {v} </Col>
+                      <Col span={18} style={{ padding: "5px" ,border: "1px dashed blue" }}> {v.job} </Col>
                       <Col span={6} style={{ padding: "5px" ,border: "1px dashed blue" }}>
                         <Button type="dashed" onClick={this.delClick(i)}>
                           Del
