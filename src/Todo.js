@@ -24,14 +24,12 @@ componentDidMount = async () => {
   addClick = async (e) => {
     const item = { job : this.state.inputText }
 
-  /* VVV Error Bad request 400 HTTP */
+  /*  Internal Server Error 500 HTTP */
     await fetch(`${api}/items`, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(item)
     })
-
-  /* ^^^ Error Bad request 400 HTTP */
 
     console.log(item)
     const response = await fetch(`${api}/items`)
