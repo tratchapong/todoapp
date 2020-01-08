@@ -22,7 +22,7 @@ componentDidMount = async () => {
   };
 
   addClick = async (e) => {
-    const item = { job : this.state.inputText }
+    const item = { id: new Date(), job : this.state.inputText }
 
   /*  Internal Server Error 500 HTTP */
     await fetch(`${api}/items`, {
