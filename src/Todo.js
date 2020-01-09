@@ -25,7 +25,6 @@ componentDidMount = async () => {
     if (!this.state.inputText) return;
     const item = { id: new Date(), job : this.state.inputText }
 
-  /*  Internal Server Error 500 HTTP */
     await fetch(`${api}/items`, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
@@ -42,6 +41,7 @@ componentDidMount = async () => {
     });
     document.querySelector("#in1").focus();
   };
+  
   pressEnter = e => {
     if (e.keyCode === 13) this.addClick();
   };
