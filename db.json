@@ -1,22 +1,6 @@
 {
   "items": [
     {
-      "id": "002",
-      "job": "Read React Book"
-    },
-    {
-      "id": "004",
-      "job": "Talk with a smile"
-    },
-    {
-      "id": "Z3wsP2",
-      "job": "Go to CC4 School"
-    },
-    {
-      "id": "2020-01-08T17:59:05.701Z",
-      "job": "Finish the Project"
-    },
-    {
       "id": "2020-01-09T15:46:53.627Z",
       "job": "Create CV for Javascript precamp"
     },
@@ -27,6 +11,14 @@
     {
       "id": "2020-01-09T16:03:06.749Z",
       "job": "Practice JS everyday"
+    },
+    {
+      "id": "2020-01-09T16:13:48.246Z",
+      "job": "practice CSS everyday"
+    },
+    {
+      "id": "2020-01-09T16:14:49.283Z",
+      "job": "Go to CC4 with fun"
     }
   ]
 }
