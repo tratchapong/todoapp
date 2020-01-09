@@ -22,6 +22,7 @@ componentDidMount = async () => {
   };
 
   addClick = async (e) => {
+    if (!this.state.inputText) return;
     const item = { id: new Date(), job : this.state.inputText }
 
   /*  Internal Server Error 500 HTTP */
@@ -45,11 +46,17 @@ componentDidMount = async () => {
     if (e.keyCode === 13) this.addClick();
   };
 
-  delClick = i => () => {
-    this.setState({
-      items: this.state.items.filter( (v,idx) => i !== idx)
+  delClick = vid => async () => {
+    console.log( this.state.items.find( v => v.id === vid)  )
+    await fetch(`${api}/items/${vid}`, {
+      method: 'DELETE',
+      headers: { 'content-type' : 'application/json' }
     })
-  }
+   const response = await fetch(`${api}/items`)
+   const items = await response.json()
+
+   this.setState({ items })
+  };
 
   render() {
     return (
@@ -75,16 +82,16 @@ componentDidMount = async () => {
             <Col span={7} style={{ border: "0px dotted blue" }}>
                 {this.state.items.map((v, i) => {
                   return (
-                    <Row key={i} type='flex' justify='start'>
+                    <Row key={v.id} type='flex' justify='start'>
                       <Col span={18} style={{ padding: "5px" ,border: "1px dashed blue" }}> {v.job} </Col>
                       <Col span={6} style={{ padding: "5px" ,border: "1px dashed blue" }}>
-                        <Button type="dashed" onClick={this.delClick(i)}>
+                        <Button type="dashed" onClick={this.delClick(v.id)}>
                           Del
                         </Button>
                       </Col>
                     </Row>
-                  );
-                })}
+                  ); 
+                })}   
             </Col>
           </Row>
         </div>
