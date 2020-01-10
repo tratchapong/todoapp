@@ -11,7 +11,7 @@ class Todo extends Component {
   };
 
   componentDidMount = async () => {
-    const response = await fetch(`${api}`);
+    const response = await fetch(`${api}/items`);
     const items = await response.json();
     // console.log(items)
     this.setState({ items });
